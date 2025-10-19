@@ -103,22 +103,26 @@ bool Fixed::operator==(const Fixed &other) const
     return (fixedPointValue == other.fixedPointValue);
 }
 
+//I compare binary values, that's why fixedPointValue can be used
 bool Fixed::operator!=(const Fixed &other) const
 {
     return (fixedPointValue != other.fixedPointValue);
 }
 
 //arithmetic operators
+//(+/-) could be fixedPointValue, but this could be used even with different scales
 Fixed Fixed::operator+(const Fixed &other) const
 {
     return (Fixed(this->toFloat() + other.toFloat()));
 }
 
+//I work on floats first, but then constructor scales it to fixedPoint
 Fixed Fixed::operator-(const Fixed &other) const
 {
     return (Fixed(this->toFloat() - other.toFloat()));
 }
 
+//to use fixedPointValue I'd need to scale - divide by the scale (or multiply in operator/)
 Fixed Fixed::operator*(const Fixed &other) const
 {
     return (Fixed(this->toFloat() * other.toFloat()));

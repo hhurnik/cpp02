@@ -27,7 +27,7 @@ Fixed::~Fixed()
 int Fixed::getRawBits(void) const
 {
     std::cout << "getRawBits member function called" << std::endl;
-    return this->fixedPointValue;
+    return (this->fixedPointValue);
 }
 
 void Fixed::setRawBits(int const raw)
@@ -47,6 +47,7 @@ Fixed::Fixed(const int value)
 }
 
 //float constructor
+//must use * instead of << - doesnt compile
 Fixed::Fixed(const float value)
 {
     std::cout << "Float constructor called" << std::endl;
